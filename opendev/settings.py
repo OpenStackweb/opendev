@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'events',
     'adminsortable2',
     'tinymce',
+    'admin_reorder',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'opendev.middleware.UserAwareFetchFromCacheMiddleware',
-
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 ROOT_URLCONF = 'opendev.urls'
@@ -117,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -209,6 +210,36 @@ CACHES = { # FXIME use STATIC_path
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 1800
+
+
+# Settins for the djang-admin-reorder app
+# Modules with a tilde "~" label are a hack to get a separator row for modules.
+# See content/static/content/admin/js/scripts.js
+ADMIN_REORDER = (
+	{'app': 'content', 'models': (
+		'content.Page',
+		{'model': 'auth.User', 'label': 'Modules ~'},
+		'content.Block',
+		'content.Sponsorship',
+		'content.ImageGallery',
+		'content.VideoGallery',
+		{'model': 'auth.Group', 'label': 'Module assets ~'},
+		'content.Button',
+		'content.Icon',
+		'content.Style',
+		{'model': 'events.Event', 'label': 'Talks ~'},
+		'content.Talk',
+		'content.Speaker',
+		'content.Room',
+		'content.Language',
+	)},
+	{'app': 'menus', 'models': (
+		'menus.BigHeaderMenu', 'menus.FooterMenu'
+	)},
+	'events',
+	'auth',
+)
+
 
 
 # Import local settings

@@ -75,5 +75,15 @@
     display: inline-block;
 }
 
+.dashboard .separator {
+    background: #f8f8f8;
+}
+
+.dashboard .separator th {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 10px;
+}
+
 
 
