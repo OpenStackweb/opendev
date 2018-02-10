@@ -18,13 +18,13 @@
         <form id="slug-form">
             <select name="header-select" id="header-select">
             {% for event in events %}
-                <option  {% if event.slug == current_event.slug %}selected{% endif %}  value="http://{{ event.slug }}.opendevconf.com:8000/admin">{{ event.title }}</option>
+                <option  {% if event.slug == current_event.slug %}selected{% endif %}  value="{{ event.get_absolute_url }}/admin/">{{ event.title }}</option>
             {% endfor %}
             </select>
             <button class="btn btn-primary" type="submit">Go</button>
         </form>
 
-        / <a href="{% url 'clear-cache' %}">Clear cache</a>
+        / <a href="{% url 'clear-cache' %}">↻ Clear cache</a>
 
     {% endif %}
         /
@@ -34,7 +34,7 @@
 
 {% block footer %}
     {{ block.super }}
-    <!-- jQuery -->
+    <!-- FIXME load jQuery properly -->
     <script src={% static '/js/jquery.js' %}></script>
 
     <script src={% static '/content/admin/js/scripts.js' %}></script>

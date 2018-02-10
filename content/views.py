@@ -124,7 +124,7 @@ class ClearCache(RedirectView): # TODO: move to admin.py?
 
     def get_redirect_url(self, *args, **kwargs):
         cache.clear()
-        messages.success(self.request, 'The site cache was cleared successfully.')
+        messages.success(self.request, '🔃 The server-side page cache was cleared successfully.')
         return self.request.META.get('HTTP_REFERER') or reverse('admin:index') #TOFIX: use slugs
 
 def filebrowser_browse(request):

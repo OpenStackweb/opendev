@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from django.conf import settings
 from filebrowser.fields import FileBrowseField
 
 from events.cloneevent import CloneViewSet
@@ -17,6 +18,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+	def get_absolute_url(self): # FIXME add protocol
+		return 'http://{}.{}'.format(self.slug, settings.SITE_HOST)
 
 class BaseEventModel(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='%(class)ss')
