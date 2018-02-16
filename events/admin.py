@@ -15,6 +15,10 @@ class EventAdmin(admin.ModelAdmin):
                 return ['base_event', 'logo']
             return ['base_event',]
         return []
+    
+    def get_fieldsets(self, request, obj=None):
+        filebrowser_site.directory = "uploads/%s/" % request.META['HTTP_HOST'].split('.')[0]
+        return super(EventAdmin, self).get_fieldsets(request, obj)
 
 class BaseEventAdmin(admin.ModelAdmin):
 
