@@ -37,7 +37,7 @@ class BaseEventAdmin(admin.ModelAdmin):
     def filter_by_event(self, qs, request):
         event = self.get_event_or_404(request)
         users = event.users.all()
-        if request.user.profile not in users:
+        if request.user.profile not in users and not request.user.is_superuser:
             raise PermissionDenied()
         return qs.filter(event=event)
 
