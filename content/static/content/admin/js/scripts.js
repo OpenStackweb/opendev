@@ -6,7 +6,7 @@ jQuery(function($){
 });
 
 jQuery(function($){
-    var event_name = $('#header-select option:selected').text();
+    var event_name = $('#header-select option:selected, #header-select-text').text();
     $(".app-content, .app-menus").find("caption a").each(function(){
         $(this).text(event_name + " " + $(this).text());
     });

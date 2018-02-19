@@ -12,9 +12,9 @@
 {% endblock %}
 
 {% block userlinks %}
+    {% get_current_event request as current_event %}
     {% if user.is_superuser  %}
         {% get_events as events %}
-        {% get_current_event request as current_event %}
         <form id="slug-form">
             <select name="header-select" id="header-select">
             {% for event in events %}
@@ -25,7 +25,8 @@
         </form>
 
         / <a href="{% url 'clear-cache' %}">↻ Clear cache</a>
-
+    {% else %}
+        / <b id="header-select-text">{{ current_event.title }}</b>
     {% endif %}
         /
     {{ block.super }}
