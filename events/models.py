@@ -19,8 +19,9 @@ class Event(models.Model):
     def __str__(self):
         return self.title
 
-	def get_absolute_url(self): # FIXME add protocol
-		return 'http://{}.{}'.format(self.slug, settings.SITE_HOST)
+    def get_absolute_url(self): # FIXME add protocol
+        return 'http://{}.{}'.format(self.slug, settings.SITE_HOST)
+
 
 class BaseEventModel(models.Model):
     event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='%(class)ss')

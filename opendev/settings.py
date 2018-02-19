@@ -16,7 +16,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
@@ -27,7 +26,6 @@ SECRET_KEY = 'w1n%w0%+uq!#(a58hmi8@w-d!ksv_w07@@0(l=1$kcyr7rvxac'
 DEBUG = TEMPLATE_DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1']
-
 
 # Application definition
 
@@ -65,7 +63,7 @@ ROOT_URLCONF = 'opendev.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR + '/templates/',],
+        'DIRS': [BASE_DIR + '/templates/', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,10 +76,7 @@ TEMPLATES = [
     },
 ]
 
-
-
 WSGI_APPLICATION = 'opendev.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -92,7 +87,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -112,7 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -126,7 +119,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
@@ -136,12 +128,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
 TINYMCE_DEFAULT_CONFIG = {
     'theme': "advanced",
     'file': "/admin/filebrowser/browse?pop",
     'language': "en",
-    'gecko_spellcheck' : 'true',
+    'gecko_spellcheck': 'true',
     'dialog_type': "modal",
     'object_resizing': 'true',
     'cleanup_on_startup': 'true',
@@ -154,31 +145,30 @@ TINYMCE_DEFAULT_CONFIG = {
     'theme_advanced_buttons2': "tablecontrols, indent, outdent, justifyleft, justifycenter, justifyright",
     'theme_advanced_buttons3': "",
     'theme_advanced_path': 'false',
-    'theme_advanced_resizing' : 'false',
+    'theme_advanced_resizing': 'false',
     'theme_advanced_blockformats': 'p,h3,h4,pre',
     'width': '690',
     'height': '350',
     'plugins': "inlinepopups,paste,advimage,table",
-    'content_css' : "/static/app/assets/css/tinymce_custom.css",
+    'content_css': "/static/app/assets/css/tinymce_custom.css",
     'advimage_update_dimensions_onchange': 'true',
     'relative_urls': 'true',
-    'convert_urls' : 'true',
-    'valid_elements' : "" +
-        "-p[class|align]," +
-        "a[href|title|id|class|target|align]," +
-        "-strong/-b," +
-        "-em/-i," +
-        "-sup," +
-        "-ol," +
-        "-ul," +
-        "-li," +
-        "img[src|alt|width|height]," +
-        "br," +
-        "hr," +
-        "table,thead,tbody,tfoot,th[colspan|rowspan],td[colspan|rowspan],tr," +
-        "h3,h4,pre",
+    'convert_urls': 'true',
+    'valid_elements': "" +
+                      "-p[class|align]," +
+                      "a[href|title|id|class|target|align]," +
+                      "-strong/-b," +
+                      "-em/-i," +
+                      "-sup," +
+                      "-ol," +
+                      "-ul," +
+                      "-li," +
+                      "img[src|alt|width|height]," +
+                      "br," +
+                      "hr," +
+                      "table,thead,tbody,tfoot,th[colspan|rowspan],td[colspan|rowspan],tr," +
+                      "h3,h4,pre",
 }
-
 
 FILEBROWSER_DIRECTORY = ''
 DIRECTORY = ''
@@ -186,22 +176,22 @@ DIRECTORY = ''
 FILEBROWSER_EXTENSIONS = {
     'Folder': [''],
     'Icon': ['.svg'],
-    'Image': ['.jpg','.jpeg','.gif','.png','.tif','.tiff',],
-    'Document': ['.pdf','.doc','.rtf','.txt','.xls','.csv'],
-    'Video': ['.mov','.wmv','.mpeg','.mpg','.avi','.rm'],
-    'Audio': ['.mp3','.mp4','.wav','.aiff','.midi','.m4p']
+    'Image': ['.jpg', '.jpeg', '.gif', '.png', '.tif', '.tiff', ],
+    'Document': ['.pdf', '.doc', '.rtf', '.txt', '.xls', '.csv'],
+    'Video': ['.mov', '.wmv', '.mpeg', '.mpg', '.avi', '.rm'],
+    'Audio': ['.mp3', '.mp4', '.wav', '.aiff', '.midi', '.m4p']
 }
 
 FILEBROWSER_SELECT_FORMATS = {
-    'file': ['Folder','Image','Document','Video','Audio'],
+    'file': ['Folder', 'Image', 'Document', 'Video', 'Audio'],
     'image': ['Image'],
     'icon': ['Icon'],
-    'icon-image': ['Icon','Image'],
+    'icon-image': ['Icon', 'Image'],
     # 'document': ['Document'],
     'video': ['Video'],
 }
 
-CACHES = { # FXIME use STATIC_path
+CACHES = {  # FXIME use STATIC_path
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
         'LOCATION': os.path.normpath(os.path.join(os.path.abspath(os.path.dirname(__file__)), '../static/CACHE')),
@@ -211,39 +201,36 @@ CACHES = { # FXIME use STATIC_path
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 1800
 
-
 # Settins for the djang-admin-reorder app
 # Modules with a tilde "~" label are a hack to get a separator row for modules.
 # See content/static/content/admin/js/scripts.js
 ADMIN_REORDER = (
-	{'app': 'content', 'models': (
-		'content.Page',
-		{'model': 'auth.User', 'label': 'Modules ~'},
-		'content.Block',
-		'content.Sponsorship',
-		'content.ImageGallery',
-		'content.VideoGallery',
-		{'model': 'auth.Group', 'label': 'Module assets ~'},
-		'content.Button',
-		'content.Icon',
-		'content.Style',
-		{'model': 'events.Event', 'label': 'Talks ~'},
-		'content.Talk',
-		'content.Speaker',
-		'content.Room',
-		'content.Language',
-	)},
-	{'app': 'menus', 'models': (
-		'menus.BigHeaderMenu', 'menus.FooterMenu'
-	)},
-	'events',
-	'auth',
+    {'app': 'content', 'models': (
+        'content.Page',
+        {'model': 'auth.User', 'label': 'Modules ~'},
+        'content.Block',
+        'content.Sponsorship',
+        'content.ImageGallery',
+        'content.VideoGallery',
+        {'model': 'auth.Group', 'label': 'Module assets ~'},
+        'content.Button',
+        'content.Icon',
+        'content.Style',
+        {'model': 'events.Event', 'label': 'Talks ~'},
+        'content.Talk',
+        'content.Speaker',
+        'content.Room',
+        'content.Language',
+    )},
+    {'app': 'menus', 'models': (
+        'menus.BigHeaderMenu', 'menus.FooterMenu'
+    )},
+    'events',
+    'auth',
 )
-
-
 
 # Import local settings
 try:
     from .settings_local import *
 except ImportError:
-    print ("Notice: Didn't import settings_local.")
+    print("Notice: Didn't import settings_local.")
