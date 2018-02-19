@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from events.models import Event
 from filebrowser.sites import site as filebrowser_site
@@ -34,6 +36,9 @@ class BaseEventAdmin(admin.ModelAdmin):
 
     def filter_by_event(self, qs, request):
         event = self.get_event_or_404(request)
+        users = event.users.all()
+        if request.user.profile not in users:
+            raise PermissionDenied()
         return qs.filter(event=event)
 
     def get_event_or_404(self, request):
