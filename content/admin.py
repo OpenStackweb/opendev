@@ -1,12 +1,21 @@
 from django.contrib import admin
 from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminMixin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import User
 from django.utils.html import format_html
 
 from content.context import ContextManager
 from .models import Sponsorship, Page, Talk, Speaker, Block, Module, ImageInGallery, ImageGallery, ModuleInPage, Style, \
-    ListItem, Icon, ButtonInModule, VideoGallery, Room, Language, Button, TalkInGallery
+    ListItem, Icon, ButtonInModule, VideoGallery, Room, Language, Button, TalkInGallery, Profile
 
 from events.admin import EventModelAdmin, EventTabularInline
+
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+    verbose_name_plural = 'Profile'
+    fk_name = 'user'
 
 
 class ModuleInline(SortableInlineAdminMixin, EventTabularInline):
@@ -196,6 +205,14 @@ class RoomAdmin(EventModelAdmin):
 
 class ButtonAdmin(EventModelAdmin):
     exclude = ('event',)
+    
+class CustomUserAdmin(UserAdmin):
+    inlines = (ProfileInline, )
+
+    def get_inline_instances(self, request, obj=None):
+        if not obj:
+            return list()
+        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
 admin.site.register(Sponsorship, SponsorshipAdmin)
 admin.site.register(Talk, TalkAdmin)
@@ -209,3 +226,5 @@ admin.site.register(Icon, IconAdmin)
 admin.site.register(Language, LanguageAdmin)
 admin.site.register(Room, RoomAdmin)
 admin.site.register(Button, ButtonAdmin)
+admin.site.unregister(User)
+admin.site.register(User, CustomUserAdmin)
