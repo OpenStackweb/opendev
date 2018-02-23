@@ -4,5 +4,4 @@ django-filebrowser-no-grappelli==3.7.3
 -e git+https://github.com/mishbahr/django-modeladmin-reorder@fb40efa6d3d0668f3323aaca8e5c4486c0ffdd7b#egg=django_modeladmin_reorder
 django-tinymce==2.7.0
 Pillow==5.0.0
-pkg-resources==0.0.0
 pytz==2017.3
