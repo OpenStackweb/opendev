@@ -77,4 +77,9 @@ ln -s /var/www/opendev/opendev/opendev.ini /etc/uwsgi/vassals/
 # Optional: Run this line in your bash to verify it's all working
 /usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --master
 
+# Link systemd config and start it
+systemctl enable /var/www/opendev/opendev/opendev.uwsgi.service
+service opendev.uwsgi start
+service opendev.uwsgi status
+
 ```
