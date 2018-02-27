@@ -53,11 +53,23 @@ Clone the project under /var/www/opendev
 
 Then run the below commands as root: `sudo -i`
 
-## Install nginx and uwsgi
+## Install services: nginx, MySQL and uwsgi
 ```bash
 add-apt-repository ppa:nginx/stable
-apt-get update && apt-get install nginx
-pip3 install uwsgi
+apt-get update
+apt-get install nginx mysql-server libmysqlclient-dev
+pip3 install uwsgi mysqlclient 
+```
+
+## Create a MySQL DB and user.
+
+```bash
+mysql -u root -p
+```
+```sql
+CREATE DATABASE opendev DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES ON opendev.* TO 'opendev'@'localhost' IDENTIFIED BY '**********';
+EXIT
 ```
 
 ## Config nginx and uwsgi services

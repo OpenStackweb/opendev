@@ -5,19 +5,20 @@ import os
 
 #DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'ENGINE': 'django.db.backends.mysql',
 #        'NAME': 'opendev',
 #        'USER': 'opendev',
 #        'PASSWORD': 'some very secret password',
 #        'HOST': '',
 #        'PORT': '',
 #        'OPTIONS': {
-#        }        
+#             "charset": "utf8mb4",
+#        }    
 #    }
 #}
 
 # https://gist.github.com/ndarville/3452907#gistcomment-2321128
-SECRET_KEY = '.$Y?O?r:j@q+x@oRu<Rd3~9t'ZQ?GRRZNf``ove_^8u-[I8'
+SECRET_KEY = '.$Y?O?r:j@q+x@oRu<Rd3~9tXZQ?GRRZNf``ove_^8u-[I8'
 
 SITE_HOST = "opendev.dev9.tipit.net"
 SESSION_COOKIE_DOMAIN = '.' + SITE_HOST # Includes subdomains
