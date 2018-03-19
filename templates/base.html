@@ -32,15 +32,15 @@
     {% block extrahead %}{% endblock %}
 
     <script>
-        {{ page.event.custom_js | safe }}
+{{ page.event.custom_js | safe }}
     </script>
+
+    <style>
+{{ page.event.custom_css }}
+    </style>
+
+    {% block extrastyle %}{% endblock %}
 </head>
-
-<style>
-    {{ page.event.custom_css }}
-</style>
-
-{% block extrastyle %}{% endblock %}
 
 <body id="page-top" class="index">
 
