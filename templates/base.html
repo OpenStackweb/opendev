@@ -201,7 +201,7 @@
                                         {% endif %}
                         </div>
 
-<!--  ---------============= End Case Block ==============---------   -->
+<!--  ================== End Case Block ==================   -->
                             {% elif module.type == 'IMAGEGALLERY' %}
                                 {% if module.display_title %}
                                     <div class="row">
@@ -233,8 +233,8 @@
 
                                         {% endfor %}
                                     </div>
-<!--   -------------======== End Case ImageGallery ====-------------- -->
-<!--   -------------======== Case SPONSORSHIP ========---------------  -->
+<!--   ================== End Case ImageGallery ================== -->
+<!--   ================== Case SPONSORSHIP ==================  -->
                             {% elif module.type == 'SPONSORSHIP' %}
                                 <div class="col-sm-12">
                                     <h2>{{ module.title }}</h2>
@@ -245,8 +245,8 @@
                                 <div class="row">
                                     <div class="col-sm-12"><hr style="border-color: #ddd;margin-bottom:60px;"></div>
                                 </div>
-<!--   -------------======== End Case Sponsorship ====-------------- -->
-<!--   -------------======== Case VideoGallery ========---------------  -->
+<!--   ================== End Case Sponsorship ================== -->
+<!--   ================== Case VideoGallery ==================  -->
                             {% elif module.type == 'VIDEOGALLERY' %}
                                 <h2>{{ module.title }}</h2>
                                 {% get_videos_row module.videogallery.videos_per_row module.videogallery.talks.count as rows  %}
