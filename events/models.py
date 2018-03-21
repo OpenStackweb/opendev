@@ -14,7 +14,7 @@ class Event(models.Model):
     start_date = models.DateField(blank=False)
     public = models.BooleanField(default=True)
     custom_css = models.TextField(blank=True, null=True, verbose_name='Custom CSS')
-    custom_js = models.TextField(blank=True, null=True, verbose_name='Custom JS', help_text="Printed just before the closing </head> tag. Make sure it's an async script. It will be rendered as-is, unescaped, so make sure its coming from a trusted source.")
+    custom_js = models.TextField(blank=True, null=True, verbose_name='Custom JS', help_text="Printed just before the closing &lt;/head&gt; tag. Make sure it's an async script. It will be rendered as-is, unescaped, so make sure its coming from a trusted source.")
     base_event = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Clone from')
 
     def __str__(self):
