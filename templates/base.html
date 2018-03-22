@@ -167,6 +167,14 @@
                                                             </div>
                                                     </div>
                                                 {% endif %}
+                                                {% if module.block.buttons.count %}
+                                                    <div class="buttons text-{{ module.block.buttons_justify | lower }}">
+                                                        {% for button in module.block.buttons.all %}
+                                                            <a href="{{ button.button.url }}" class="intro-btn">{{ button.button.caption }}</a>
+                                                        {% endfor %}
+                                                    </div>
+
+                                                {% endif %}
                                             {% endif %}
                                         {% elif module.block.layout == 'TWOCOL' %}
                                             <div class="col-sm-4">
@@ -192,10 +200,13 @@
                                                         </div>
                                                     </div>
                                                 {% endif %}
-                                                {% if module.buttons.count %}
-                                                    {% for button in module.buttons.all %}
-                                                        <a href="{{ button.button.url }}" class="intro-btn">{{ button.button.caption }}</a>
-                                                    {% endfor %}
+                                                {% if module.block.buttons.count %}
+                                                    <div class="buttons text-{{ module.block.buttons_justify | lower }}">
+                                                        {% for button in module.block.buttons.all %}
+                                                            <a href="{{ button.button.url }}" class="intro-btn">{{ button.button.caption }}</a>
+                                                        {% endfor %}
+                                                    </div>
+
                                                 {% endif %}
                                             </div>
                                         {% endif %}

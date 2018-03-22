@@ -112,6 +112,8 @@ class Block(Module):
     kicker = models.CharField(max_length=50, blank=True)
     layout = models.CharField(max_length=6, choices=LAYOUT_CHOICES, default='ONECOL')
     content_justify = models.CharField('Content align', max_length=6, choices=ALIGN_CHOICES, default='LEFT')
+    buttons_justify = models.CharField('Buttons Align', max_length=6, choices=ALIGN_CHOICES, default='CENTER')
+
 
     def __str__(self):
         return "{} {}".format(self.kicker, self.title)

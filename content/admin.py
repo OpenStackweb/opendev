@@ -107,6 +107,9 @@ class BlockAdmin(EventModelAdmin):
         ('Layout', {
             'fields': ('layout', 'style', 'content_width', 'content_justify')
         }),
+        ('Buttons',{
+           'fields': ('buttons_justify', )
+        }),
         ('Media', {
             'fields': ('image', 'image_position', 'image_on_background')
         }),
