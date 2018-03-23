@@ -42,7 +42,7 @@
     {% block extrastyle %}{% endblock %}
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="{% if page.slug == '' %}index{% else %}{{ page.slug }}{% endif %}">
 
 {% block header %}
 
@@ -101,15 +101,15 @@
         {% for module in modules %}
             {% if module.public or request.user.is_staff %}
                 {% if module.image_on_background %}
-                    <div class="{{ module.style.slug }} {% set_justify module.block.content_justify %}" style='background-image: url("{{ module.image.url }}"); background-size: 450px'>
+                    <div class="{{ module.style.slug }} {{ module.title | slugify }} {% set_justify module.block.content_justify %}" style='background-image: url("{{ module.image.url }}"); background-size: 450px'>
                 {% else %}
                     {% if module.type == 'SPONSORSHIP' %}
-                      <div class="{{ module.style.slug }} sponsorship {% set_justify module.block.content_justify %}">
+                      <div class="{{ module.style.slug }} {{ module.title | slugify }} sponsorship {% set_justify module.block.content_justify %}">
                     {% elif not module.content and not module.type == 'IMAGEGALLERY' and not module.type == 'VIDEOGALLERY' %}
-                      <div class="{{ module.style.slug }} title-only ">
+                      <div class="{{ module.style.slug }} title-only {{ module.title | slugify }}">
 
                     {% else %}
-                        <div class="{{ module.style.slug }} {% set_justify module.block.content_justify %}">
+                        <div class="{{ module.style.slug }} {{ module.title | slugify }} {% set_justify module.block.content_justify %}">
                     {% endif %}
                 {% endif %}
                     <div class="container">
