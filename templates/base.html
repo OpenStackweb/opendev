@@ -69,7 +69,7 @@
                         {% for page in header_menus %}
                             {% if page.page.public or request.user.is_staff %}
                                 {% if page.target_type == 'page' %}
-                                    <li class='{% add_active request page.page.slug %} {{ page.page.slug }}'>
+                                    <li class='{% add_active request page.page.slug %} {{ page.page.slug|default:"index" }}'>
                                         <a href="{{ page.page.get_absolute_url }}">{{ page.display_name }}</a>
                                     {% else %}
                                     <li>
