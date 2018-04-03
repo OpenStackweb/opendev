@@ -121,6 +121,6 @@ def get_videos_row(per_row, videos):
 
 @register.simple_tag(name='parse_youtube_link')
 def parse_youtube_link(link):
-    video_id = re.match(r'(https:\/\/)?(www.)?(youtube.com\/watch\?v=)(\w+)', link).group(4)
+    video_id = re.match(r'^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$', link).group(5)
     formatted_link = 'https://www.youtube.com/embed/{}?rel=0&showinfo=0'.format(video_id)
     return formatted_link
