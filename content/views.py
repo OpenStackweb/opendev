@@ -106,7 +106,7 @@ class TalkView(BaseEventPageView):
             raise Http404("Requested page doesn't exist")
         header_menus = BigHeaderMenu.objects.filter(event__slug=self.event_slug).order_by('order')
         footer_menus = self.get_footer_menus(self.event_slug)
-        back_url = Page.objects.get(title='Schedule').get_absolute_url()
+        back_url = Page.objects.get(title='Schedule', event__slug=self.event_slug).get_absolute_url()
         context.update({
             'header_menus': header_menus,
             'title': self.talk.title,
