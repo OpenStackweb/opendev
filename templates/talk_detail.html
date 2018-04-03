@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load get_next_talk get_prev_talk from custom_tags %}
+{% load get_next_talk get_prev_talk parse_youtube_link from custom_tags %}
 {% block navigation %}
     {% with talk as page %}
         {{ block.super }}
@@ -26,7 +26,7 @@
                 <div class="col-sm-7 block">
                     <h2>{{ talk.title }}</h2>
                     {% if talk.video %}
-                        <p class="center"><iframe width="526" height="296" src="{{ talk.video }}" frameborder="0" allowfullscreen=""></iframe></p>
+                        <p class="center"><iframe width="526" height="296" src="{% parse_youtube_link talk.video %}" frameborder="0" allowfullscreen=""></iframe></p>
                     {% endif %}
                     <p class="talk-content">{{ talk.content | safe}}</p>
                 </div>
