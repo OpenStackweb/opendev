@@ -264,7 +264,12 @@
                                 {% for talk_in_gallery in module.videogallery.talks.all %}
                                         <div class="{% set_col_size module.videogallery.videos_per_row 'sm' %} single-video">
                                             <div class="embed-responsive embed-responsive-16by9">
-                                                <iframe class="embed-responsive-item" width="560" height="315" src="{% parse_youtube_link talk_in_gallery.talk.video %}" frameborder="0" allowfullscreen=""></iframe>
+                                                <iframe class="embed-responsive-item"
+                                                        width="560" height="315"
+                                                        src="{% parse_youtube_link talk_in_gallery.talk.video %}"
+                                                        frameborder="0" allowfullscreen=""
+                                                        style="background-color: black"
+                                                ></iframe>
                                             </div>
                                         <p class="video-title"><a href="{{ talk_in_gallery.talk.get_absolute_url }}">{{ talk_in_gallery.talk.title }}</a></p>
                                         </div>
